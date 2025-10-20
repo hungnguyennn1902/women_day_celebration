@@ -43,13 +43,31 @@
       background: #ffe6f0;
     }
 
-    .message {
-      margin-top: 40px;
-      font-family: 'Great Vibes', cursive;
-      font-size: 60px;
+    /* 👉 Ảnh người yêu – to hơn, viền sáng đẹp */
+    .lover-img {
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+      margin-bottom: 30px;
       opacity: 0;
       transform: scale(0.8);
-      transition: all 0.8s ease;
+      transition: all 1s ease;
+    }
+
+    .lover-img.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .message {
+      margin-top: 20px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 65px;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 1s ease;
       max-width: 90%;
     }
 
@@ -76,16 +94,25 @@
 
   <h1>Chúc mừng 20/10 💖</h1>
   <button class="btn" id="showBtn">Bấm vào đây để tiếp tục</button>
-  <div class="message" id="message">Chúc em 20/10 thật xinh đẹp, hạnh phúc và tràn đầy niềm vui! 💐</div>
+
+  <!-- Ảnh người yêu -->
+  <img src="2.jpg" alt="Ảnh người yêu" class="lover-img" id="loverImg">
+
+  <!-- Lời chúc -->
+  <div class="message" id="message">
+    Chúc em 20/10 thật xinh đẹp, hạnh phúc và tràn đầy niềm vui! 💐
+  </div>
 
   <script>
     const btn = document.getElementById('showBtn');
     const msg = document.getElementById('message');
+    const img = document.getElementById('loverImg');
     let heartsRunning = false;
 
     btn.addEventListener('click', () => {
-      msg.classList.add('show');
       btn.style.display = 'none';
+      img.classList.add('show');
+      msg.classList.add('show');
       if (!heartsRunning) {
         heartsRunning = true;
         setInterval(createHearts, 500);

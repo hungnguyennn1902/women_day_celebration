@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chúc mừng 20/10 — Dành tặng em</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background: white;
+      color: #ff69b4;
+      border: none;
+      padding: 14px 34px;
+      font-size: 22px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: #ffe6f0;
+    }
+
+    .message {
+      margin-top: 40px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 60px;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.8s ease;
+      max-width: 90%;
+    }
+
+    .message.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    @keyframes hearts {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    }
+
+    .heart {
+      position: absolute;
+      bottom: 0;
+      color: #ff69b4;
+      font-size: 20px;
+      animation: hearts 6s linear infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Chúc mừng 20/10 💖</h1>
+  <button class="btn" id="showBtn">Bấm vào đây để xem lời chúc</button>
+  <div class="message" id="message">Chúc em 20/10 thật xinh đẹp, hạnh phúc và tràn đầy niềm vui! 💐</div>
+
+  <script>
+    const btn = document.getElementById('showBtn');
+    const msg = document.getElementById('message');
+    let heartsRunning = false;
+
+    btn.addEventListener('click', () => {
+      msg.classList.add('show');
+      btn.style.display = 'none';
+      if (!heartsRunning) {
+        heartsRunning = true;
+        setInterval(createHearts, 500);
+      }
+    });
+
+    function createHearts() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 3 + Math.random() * 2 + 's';
+      heart.style.fontSize = 20 + Math.random() * 30 + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+  </script>
+</body>
+</html>

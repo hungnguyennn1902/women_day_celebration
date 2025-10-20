@@ -43,7 +43,7 @@
       background: #ffe6f0;
     }
 
-    /* 👉 Ảnh người yêu – to hơn, viền sáng đẹp */
+    /* Ảnh người yêu */
     .lover-img {
       width: 400px;
       height: 400px;
@@ -103,16 +103,26 @@
     Chúc em 20/10 thật xinh đẹp, hạnh phúc và tràn đầy niềm vui! 💐
   </div>
 
+  <!-- 🎶 Nhạc nền -->
+  <audio id="bgMusic" src="love.mp3" loop></audio>
+
   <script>
     const btn = document.getElementById('showBtn');
     const msg = document.getElementById('message');
     const img = document.getElementById('loverImg');
+    const music = document.getElementById('bgMusic');
     let heartsRunning = false;
 
     btn.addEventListener('click', () => {
       btn.style.display = 'none';
       img.classList.add('show');
       msg.classList.add('show');
+
+      // 🔊 Phát nhạc khi bấm nút
+      music.play().catch(() => {
+        console.log("Trình duyệt chặn tự động phát nhạc — cần click nút!");
+      });
+
       if (!heartsRunning) {
         heartsRunning = true;
         setInterval(createHearts, 500);
